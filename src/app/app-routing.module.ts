@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -9,11 +10,10 @@ import {NotFoundPageComponent} from './componentes/not-found-page/not-found-page
 
 
 const routes: Routes = [
-  {path: '', component: HomePageComponent},
+  {path: '', component: HomePageComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginPageComponent},
   {path: 'register', component: RegisterPageComponent},
-  //{path: 'privado', component: PrivadoPageComponent, canActivate: [AuthGuard]},
-  {path: 'privado', component: PrivadoPageComponent},
+  {path: 'privado', component: PrivadoPageComponent, canActivate: [AuthGuard]},
   {path: '**', component: NotFoundPageComponent}
 ];
 
